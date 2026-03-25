@@ -1,0 +1,197 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+.font-bangla {
+  font-family: "Hind Siliguri", sans-serif;
+}
+.active {
+  background-color: #422ad5;
+  color: white;
+}
+
+      :root {
+        --navy:        #0f2042;
+        --navy-light:  #1e4480;
+        --blue:        #2563eb;
+        --blue-light:  #3b82f6;
+        --surface:     #f0f6ff;
+        --border:      #dde9fb;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f8fafd 0%, #eef3fb 50%, #dbeafe 100%) !important;
+      }
+
+      /* ── Navbar ── */
+      .navbar {
+        background: rgba(255,255,255,0.82) !important;
+        backdrop-filter: blur(18px) !important;
+        border-bottom: 1px solid var(--border) !important;
+        box-shadow: 0 2px 18px rgba(37,99,235,0.07) !important;
+      }
+
+      .navbar-start a span.text-blue-900 {
+        color: var(--navy) !important;
+        font-weight: 800;
+      }
+
+      .navbar-start a span.font-bangla {
+        color: var(--blue) !important;
+        font-weight: 700;
+      }
+
+      .navbar-start a img {
+        border: 2px solid var(--blue-light);
+        box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+      }
+
+      .navbar-end .btn-outline.btn-primary {
+        border-color: var(--blue) !important;
+        color: var(--blue) !important;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .navbar-end .btn-outline.btn-primary:last-child {
+        background: var(--navy) !important;
+        border-color: var(--navy) !important;
+        color: #fff !important;
+      }
+      .navbar-end .btn-outline.btn-primary:hover {
+        background: var(--blue) !important;
+        border-color: var(--blue) !important;
+        color: #fff !important;
+        box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+        transform: translateY(-1px);
+      }
+      .navbar-end .btn-outline.btn-primary:last-child:hover {
+        background: var(--navy-light) !important;
+        border-color: var(--navy-light) !important;
+      }
+
+      .dropdown-content.menu {
+        background: white !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 8px 32px rgba(15,32,66,0.12) !important;
+        border-radius: 14px !important;
+      }
+      .dropdown-content.menu li a:hover {
+        background: var(--surface) !important;
+        color: var(--blue) !important;
+      }
+
+      /* ── Hero ── */
+      section h2 span.text-blue-900 {
+        background: linear-gradient(135deg, var(--navy), var(--blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      section .flex-1 img {
+        border: 3px solid white;
+        box-shadow: 0 16px 56px rgba(37,99,235,0.2), 0 4px 18px rgba(15,32,66,0.1);
+      }
+
+      /* ── Level Buttons ── */
+      #level-container .btn,
+      #level-container button,
+      #level-container a,
+      #level-container [class*="btn"] {
+        background: white !important;
+        border: 2px solid var(--blue) !important;
+        color: var(--blue) !important;
+        font-weight: 600 !important;
+        border-radius: 9999px !important;
+        padding: 0.5rem 1.4rem !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 8px rgba(37,99,235,0.08) !important;
+        cursor: pointer;
+        font-size: 0.875rem !important;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+      }
+      #level-container .btn:hover,
+      #level-container button:hover,
+      #level-container a:hover,
+      #level-container [class*="btn"]:hover,
+      #level-container .btn-active,
+      #level-container .btn-primary,
+      #level-container .active {
+        background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+        border-color: transparent !important;
+        color: white !important;
+        box-shadow: 0 6px 18px rgba(37,99,235,0.35) !important;
+        transform: translateY(-2px) !important;
+      }
+
+      /* ── Search ── */
+      section .flex.items-center.bg-white {
+        border: 1.5px solid var(--border) !important;
+        box-shadow: 0 4px 20px rgba(37,99,235,0.10) !important;
+        transition: box-shadow 0.2s, border-color 0.2s;
+      }
+      section .flex.items-center.bg-white:focus-within {
+        border-color: var(--blue-light) !important;
+        box-shadow: 0 4px 24px rgba(37,99,235,0.2) !important;
+      }
+
+      #btn-search {
+        background: linear-gradient(135deg, var(--blue), var(--navy)) !important;
+        border: none !important;
+        color: white !important;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      #btn-search:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(37,99,235,0.35) !important;
+        background: linear-gradient(135deg, var(--navy), var(--blue)) !important;
+      }
+
+      /* ── Spinner ── */
+      #spinner .loading {
+        color: var(--blue) !important;
+      }
+
+      /* ── Word Container ── */
+      #word-container {
+        background: rgba(255,255,255,0.65) !important;
+        backdrop-filter: blur(14px) !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 4px 36px rgba(37,99,235,0.08) !important;
+      }
+
+      #word-container > div {
+        border: 1px dashed var(--border) !important;
+      }
+      #word-container > div h2 {
+        color: var(--navy) !important;
+      }
+      #word-container > div p {
+        color: #64748b !important;
+      }
+
+      /* ── Modal ── */
+      .modal-box {
+        border-radius: 20px !important;
+        border: 1px solid var(--border) !important;
+        box-shadow: 0 20px 60px rgba(15,32,66,0.18) !important;
+      }
+      .modal-box .btn-primary {
+        background: linear-gradient(135deg, var(--blue), var(--navy)) !important;
+        border: none !important;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .modal-box .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(37,99,235,0.35) !important;
+      }
+
+      /* ── Scrollbar ── */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--surface); }
+      ::-webkit-scrollbar-thumb { background: #bfdbfe; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--blue-light); }
+  

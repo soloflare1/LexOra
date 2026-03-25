@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title >LexOra | Best Platform for learning English</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind + DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="./style/style.css" />
+
+   
+  </head>
+
+  <body class="bg-gradient-to-br from-slate-50 to-blue-100 font-[Poppins]">
+
+    <!-- NAVBAR -->
+    <header>
+      <div class="navbar bg-white/70 backdrop-blur-lg shadow-md sticky top-0 z-50 px-5">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <i class="fa-solid fa-bars text-lg"></i>
+            </div>
+            <ul class="menu menu-sm dropdown-content bg-white rounded-xl mt-3 w-52 p-2 shadow-lg">
+              <li><a><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+              <li><a><i class="fa-solid fa-book-open"></i> Learn</a></li>
+              <li><a><i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut</a></li>
+            </ul>
+          </div>
+
+          <a class="flex items-center gap-2 hover:scale-105 transition">
+            <span class="text-3xl font-bold text-blue-900">Lex</span>
+            <img class="w-12 rounded-full shadow-md" src="./assets/logo.png" />
+            <span class="font-bangla text-3xl font-semibold">ra</span>
+          </a>
+        </div>
+
+        <div class="navbar-end hidden lg:flex">
+          <ul class="menu menu-horizontal gap-3">
+            <li><a class="btn btn-outline btn-primary rounded-full">FAQ</a></li>
+            <li><a class="btn btn-outline btn-primary rounded-full">Learn</a></li>
+            <li><a class="btn btn-outline btn-primary rounded-full">LogOut</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="flex flex-col-reverse md:flex-row items-center gap-10 py-16 w-11/12 mx-auto">
+      <div class="flex-1 text-center md:text-left">
+         <h2 class="text-5xl font-extrabold mb-6 leading-tight">
+          <span class="text-blue-900">Master English</span> One Word at a Time
+        </h2>
+        <p class="font-bangla text-lg text-gray-600 leading-relaxed">
+          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+          অন্য একটি Level এ
+        </p>
+      </div>
+      <div class="flex-1">
+        <img class="drop-shadow-2xl hover:scale-105 transition duration-300 rounded-full w-100 h-100"
+          src="./assets/hero-student.png" />
+      </div>
+    </section>
+
+    <!-- LEVEL SECTION -->
+    <section class="py-10">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-10">
+        <span class="text-blue-900">Build</span> Your Vocabulary
+      </h2>
+      <div id="level-container" class="flex gap-3 flex-wrap justify-center"></div>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="flex justify-center my-10">
+      <div class="flex items-center bg-white shadow-lg rounded-full px-4 py-2 gap-2">
+        <input
+          id="input-search"
+          type="text"
+          placeholder="Search Vocabulary..."
+          class="outline-none px-3 py-2 rounded-full w-64"
+        />
+        <button id="btn-search" class="btn btn-primary rounded-full px-6">
+          Search
+        </button>
+      </div>
+    </section>
+
+    <!-- SPINNER -->
+    <section id="spinner" class="flex justify-center items-center py-20 hidden">
+      <span class="loading loading-bars loading-xl text-primary"></span>
+    </section>
+
+    <!-- WORD CONTAINER -->
+    <section
+      id="word-container"
+      class="bg-white/60 backdrop-blur-md p-10 w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rounded-2xl shadow-md"
+    >
+      <div class="text-center bg-white col-span-full rounded-2xl py-14 shadow space-y-6 font-bangla">
+        <p class="text-xl text-gray-400">
+          আপনি এখনো কোন Lesson Select করেন নি
+        </p>
+        <h2 class="text-3xl font-bold">একটি Lesson Select করুন</h2>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box rounded-2xl shadow-xl">
+        <div id="details-container" class="space-y-5"></div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn btn-primary rounded-full">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./script/index.js"></script>
+  </body>
+</html>
