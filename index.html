@@ -3,135 +3,1050 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title >LexOra | Best Platform for learning English</title>
+    <title>LexOra | Best Platform for Learning English</title>
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
 
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
 
     <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Tailwind + DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <link rel="stylesheet" href="./style/style.css" />
+    <style>
+      :root {
+        --primary: #1e3a8a;
+        --primary-light: #3b82f6;
+        --accent: #6366f1;
+        --accent-soft: #eef2ff;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --radius: 16px;
+      }
 
-   
+      * { box-sizing: border-box; }
+
+      body {
+        background: #f0f4ff;
+        font-family: 'DM Sans', sans-serif;
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .font-bangla { font-family: 'Hind Siliguri', sans-serif; }
+      .font-display { font-family: 'DM Serif Display', serif; }
+
+      /* Animated mesh background */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 80% 60% at 20% 10%, #dbeafe88 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 80% 80%, #e0e7ff88 0%, transparent 60%),
+          radial-gradient(ellipse 40% 40% at 50% 50%, #f0fdf488 0%, transparent 70%);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* NAVBAR */
+      .navbar-custom {
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 0 2rem;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo-text {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.75rem;
+        color: var(--primary);
+        letter-spacing: -0.5px;
+      }
+
+      .logo-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #dbeafe;
+      }
+
+      .nav-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 20px;
+        border-radius: 50px;
+        border: 1.5px solid var(--border);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--primary);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+
+      .nav-btn:hover {
+        background: var(--accent-soft);
+        border-color: #a5b4fc;
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .nav-btn.logout {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      .nav-btn.logout:hover {
+        background: #1e40af;
+        border-color: #1e40af;
+        color: #fff;
+      }
+
+      /* HERO */
+      .hero-section {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 5rem 2rem 4rem;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 50px;
+        background: #eef2ff;
+        border: 1px solid #c7d2fe;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(2.5rem, 5vw, 3.75rem);
+        line-height: 1.1;
+        color: var(--text);
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-title span { color: var(--primary); }
+
+      .hero-subtitle {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50px;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        box-shadow: 0 4px 20px #1e3a8a40;
+      }
+
+      .hero-cta:hover {
+        background: #1e40af;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px #1e3a8a50;
+      }
+
+      .hero-image-wrap {
+        flex: 0 0 auto;
+        width: clamp(220px, 35vw, 380px);
+        position: relative;
+      }
+
+      .hero-image-wrap::before {
+        content: '';
+        position: absolute;
+        inset: -16px;
+        background: radial-gradient(circle, #dbeafe 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .hero-image-wrap img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        border-radius: 50%;
+        transition: transform 0.4s ease;
+        filter: drop-shadow(0 20px 40px #3b82f640);
+      }
+
+      .hero-image-wrap img:hover { transform: scale(1.04) rotate(-1deg); }
+
+      /* STATS ROW */
+      .stats-row {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .stat-item { text-align: left; }
+      .stat-num {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.75rem;
+        color: var(--primary);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 2px;
+      }
+
+      /* SECTION TITLE */
+      .section-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        color: var(--text);
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title span { color: var(--primary); }
+
+      .section-sub {
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 15px;
+        margin-bottom: 2.5rem;
+      }
+
+      /* LEVEL SECTION */
+      .level-section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      .level-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .lesson-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 22px;
+        border-radius: 50px;
+        border: 1.5px solid var(--border);
+        background: white;
+        color: var(--text-muted);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 1px 4px #0001;
+      }
+
+      .lesson-btn:hover {
+        border-color: #93c5fd;
+        color: var(--primary);
+        background: #eff6ff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px #3b82f620;
+      }
+
+      .lesson-btn.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        box-shadow: 0 4px 16px #1e3a8a40;
+      }
+
+      /* SEARCH */
+      .search-section {
+        max-width: 520px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+      }
+
+      .search-wrap {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1.5px solid var(--border);
+        border-radius: 50px;
+        padding: 6px 6px 6px 20px;
+        box-shadow: 0 4px 20px #0002;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+
+      .search-wrap:focus-within {
+        border-color: #93c5fd;
+        box-shadow: 0 4px 24px #3b82f630;
+      }
+
+      .search-input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        color: var(--text);
+        background: transparent;
+        font-family: 'DM Sans', sans-serif;
+      }
+
+      .search-input::placeholder { color: #94a3b8; }
+
+      .search-btn {
+        padding: 10px 24px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: 'DM Sans', sans-serif;
+      }
+
+      .search-btn:hover { background: #1e40af; }
+
+      /* SPINNER */
+      .spinner-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 0;
+      }
+
+      .spinner-wrap.hidden { display: none; }
+
+      /* WORD CONTAINER */
+      .word-container {
+        max-width: 1100px;
+        margin: 0 auto 4rem;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .word-container.hidden { display: none; }
+
+      /* WORD CARD */
+      .word-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem 1.5rem 1.25rem;
+        transition: all 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .word-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .word-card:hover {
+        box-shadow: 0 12px 40px #1e3a8a15;
+        transform: translateY(-3px);
+        border-color: #bfdbfe;
+      }
+
+      .word-card:hover::before { opacity: 1; }
+
+      .word-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.5rem;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .word-tag {
+        display: inline-block;
+        font-size: 11px;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: 2px 10px;
+        border-radius: 50px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .word-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 1rem 0;
+      }
+
+      .word-meaning {
+        font-family: 'Hind Siliguri', sans-serif;
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        font-style: italic;
+      }
+
+      .word-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 1.25rem;
+      }
+
+      .action-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 9px;
+        border-radius: 10px;
+        border: 1.5px solid var(--border);
+        background: var(--surface-2);
+        color: var(--text-muted);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: 'DM Sans', sans-serif;
+      }
+
+      .action-btn:hover {
+        border-color: #93c5fd;
+        color: var(--primary);
+        background: #eff6ff;
+      }
+
+      .action-btn.speak:hover {
+        border-color: #a7f3d0;
+        color: #065f46;
+        background: #ecfdf5;
+      }
+
+      /* EMPTY STATE */
+      .empty-state {
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        padding: 4rem 2rem;
+        text-align: center;
+        grid-column: 1 / -1;
+      }
+
+      .empty-icon {
+        width: 70px;
+        height: 70px;
+        background: #fef2f2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        font-size: 1.75rem;
+        color: #ef4444;
+      }
+
+      /* MODAL */
+      .modal-box-custom {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 480px;
+        width: 90%;
+        box-shadow: 0 25px 60px #0003;
+      }
+
+      .modal-word-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 2rem;
+        color: var(--text);
+        margin-bottom: 0.25rem;
+      }
+
+      .modal-pronunciation {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 14px;
+        background: #eff6ff;
+        border-radius: 50px;
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-section-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+      }
+
+      .modal-section-content {
+        font-size: 15px;
+        color: var(--text);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+
+      .synonym-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 14px;
+        border-radius: 50px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 500;
+        margin: 3px;
+        border: 1px solid #c7d2fe;
+      }
+
+      .modal-close-btn {
+        width: 100%;
+        padding: 12px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 1.5rem;
+        font-family: 'DM Sans', sans-serif;
+        transition: background 0.2s;
+      }
+
+      .modal-close-btn:hover { background: #1e40af; }
+
+      /* FOOTER */
+      footer {
+        background: var(--primary);
+        color: rgba(255,255,255,0.85);
+        padding: 3rem 2rem 2rem;
+        margin-top: 2rem;
+      }
+
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-logo-text {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 8px;
+      }
+
+      .footer-desc {
+        font-size: 13px;
+        color: rgba(255,255,255,0.6);
+        line-height: 1.7;
+      }
+
+      .footer-heading {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 12px;
+      }
+
+      .footer-link {
+        display: block;
+        font-size: 14px;
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: color 0.2s;
+      }
+
+      .footer-link:hover { color: white; }
+
+      .social-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .social-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 15px;
+        text-decoration: none;
+        transition: background 0.2s;
+        border: 1px solid rgba(255,255,255,0.15);
+      }
+
+      .social-btn:hover { background: rgba(255,255,255,0.25); }
+
+      .footer-bottom {
+        max-width: 1100px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: rgba(255,255,255,0.45);
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      /* MOBILE NAV */
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0; right: 0;
+        background: rgba(255,255,255,0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 99;
+      }
+
+      .mobile-menu.open { display: flex; }
+
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 6px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .hero-section { flex-direction: column-reverse; padding: 3rem 1.5rem; gap: 2rem; text-align: center; }
+        .stats-row { justify-content: center; }
+        .stat-item { text-align: center; }
+        .hero-cta { margin: 0 auto; }
+        .footer-inner { grid-template-columns: 1fr; }
+        .hamburger { display: block; }
+        .desktop-nav { display: none; }
+        .word-container { grid-template-columns: 1fr; padding: 0 1rem; }
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .hero-text-content > * {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      .hero-text-content > *:nth-child(1) { animation-delay: 0.05s; }
+      .hero-text-content > *:nth-child(2) { animation-delay: 0.15s; }
+      .hero-text-content > *:nth-child(3) { animation-delay: 0.25s; }
+      .hero-text-content > *:nth-child(4) { animation-delay: 0.35s; }
+
+      dialog::backdrop { background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); }
+    </style>
   </head>
 
-  <body class="bg-gradient-to-br from-slate-50 to-blue-100 font-[Poppins]">
+  <body>
 
     <!-- NAVBAR -->
     <header>
-      <div class="navbar bg-white/70 backdrop-blur-lg shadow-md sticky top-0 z-50 px-5">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-              <i class="fa-solid fa-bars text-lg"></i>
-            </div>
-            <ul class="menu menu-sm dropdown-content bg-white rounded-xl mt-3 w-52 p-2 shadow-lg">
-              <li><a><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
-              <li><a><i class="fa-solid fa-book-open"></i> Learn</a></li>
-              <li><a><i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut</a></li>
-            </ul>
-          </div>
+      <nav class="navbar-custom">
+        <!-- Logo -->
+        <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+          <img class="logo-img" src="./assets/logo.png" alt="LexOra Logo" />
+          <span class="logo-text">LexOra</span>
+        </a>
 
-          <a class="flex items-center gap-2 hover:scale-105 transition">
-            <span class="text-3xl font-bold text-blue-900">Lex</span>
-            <img class="w-12 rounded-full shadow-md" src="./assets/logo.png" />
-            <span class="font-bangla text-3xl font-semibold">ra</span>
+        <!-- Desktop Nav -->
+        <div class="desktop-nav" style="display:flex;gap:10px;align-items:center;">
+          <a class="nav-btn" href="#">
+            <i class="fa-regular fa-circle-question" style="font-size:14px;"></i> FAQ
+          </a>
+          <a class="nav-btn" href="#">
+            <i class="fa-solid fa-book-open" style="font-size:13px;"></i> Learn
+          </a>
+          <a class="nav-btn logout" href="#">
+            <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:13px;"></i> Log Out
           </a>
         </div>
 
-        <div class="navbar-end hidden lg:flex">
-          <ul class="menu menu-horizontal gap-3">
-            <li><a class="btn btn-outline btn-primary rounded-full">FAQ</a></li>
-            <li><a class="btn btn-outline btn-primary rounded-full">Learn</a></li>
-            <li><a class="btn btn-outline btn-primary rounded-full">LogOut</a></li>
-          </ul>
-        </div>
+        <!-- Hamburger -->
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <a class="nav-btn" href="#" style="justify-content:flex-start;">
+          <i class="fa-regular fa-circle-question"></i> FAQ
+        </a>
+        <a class="nav-btn" href="#" style="justify-content:flex-start;">
+          <i class="fa-solid fa-book-open"></i> Learn
+        </a>
+        <a class="nav-btn logout" href="#" style="justify-content:flex-start;">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+        </a>
       </div>
     </header>
 
     <!-- HERO -->
-    <section class="flex flex-col-reverse md:flex-row items-center gap-10 py-16 w-11/12 mx-auto">
-      <div class="flex-1 text-center md:text-left">
-         <h2 class="text-5xl font-extrabold mb-6 leading-tight">
-          <span class="text-blue-900">Master English</span> One Word at a Time
-        </h2>
-        <p class="font-bangla text-lg text-gray-600 leading-relaxed">
-          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
-          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
-          অন্য একটি Level এ
-        </p>
-      </div>
-      <div class="flex-1">
-        <img class="drop-shadow-2xl hover:scale-105 transition duration-300 rounded-full w-100 h-100"
-          src="./assets/hero-student.png" />
+    <section>
+      <div class="hero-section">
+        <div class="hero-text-content" style="flex:1;">
+          <div class="hero-badge">
+            <i class="fa-solid fa-star" style="font-size:11px;"></i>
+            English Learning Platform
+          </div>
+          <h1 class="hero-title">
+            Master English,<br/>
+            <span>One Word</span> at a Time
+          </h1>
+          <p class="hero-subtitle font-bangla">
+            আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+            আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+            অন্য একটি Level এ।
+          </p>
+          <a class="hero-cta" href="#level-section">
+            Start Learning <i class="fa-solid fa-arrow-right" style="font-size:13px;"></i>
+          </a>
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Lessons</div>
+            </div>
+            <div class="stat-item" style="border-left:1px solid var(--border);padding-left:2rem;">
+              <div class="stat-num">200+</div>
+              <div class="stat-label">Vocabulary Words</div>
+            </div>
+            <div class="stat-item" style="border-left:1px solid var(--border);padding-left:2rem;">
+              <div class="stat-num">Free</div>
+              <div class="stat-label">Always</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="./assets/hero-student.png" alt="Student" />
+        </div>
       </div>
     </section>
 
     <!-- LEVEL SECTION -->
-    <section class="py-10">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-10">
-        <span class="text-blue-900">Build</span> Your Vocabulary
-      </h2>
-      <div id="level-container" class="flex gap-3 flex-wrap justify-center"></div>
+    <section class="level-section" id="level-section">
+      <h2 class="section-title"><span>Build</span> Your Vocabulary</h2>
+      <p class="section-sub">Select a lesson to explore words</p>
+      <div id="level-container" class="level-grid"></div>
     </section>
 
     <!-- SEARCH -->
-    <section class="flex justify-center my-10">
-      <div class="flex items-center bg-white shadow-lg rounded-full px-4 py-2 gap-2">
+    <section class="search-section">
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass" style="color:#94a3b8;font-size:15px;margin-right:4px;"></i>
         <input
           id="input-search"
           type="text"
-          placeholder="Search Vocabulary..."
-          class="outline-none px-3 py-2 rounded-full w-64"
+          placeholder="Search vocabulary..."
+          class="search-input"
         />
-        <button id="btn-search" class="btn btn-primary rounded-full px-6">
-          Search
-        </button>
+        <button id="btn-search" class="search-btn">Search</button>
       </div>
     </section>
 
     <!-- SPINNER -->
-    <section id="spinner" class="flex justify-center items-center py-20 hidden">
-      <span class="loading loading-bars loading-xl text-primary"></span>
-    </section>
+    <div id="spinner" class="spinner-wrap hidden">
+      <div style="width:44px;height:44px;border:3px solid #dbeafe;border-top-color:#1e3a8a;border-radius:50%;animation:spin 0.7s linear infinite;"></div>
+    </div>
 
     <!-- WORD CONTAINER -->
-    <section
-      id="word-container"
-      class="bg-white/60 backdrop-blur-md p-10 w-11/12 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 rounded-2xl shadow-md"
-    >
-      <div class="text-center bg-white col-span-full rounded-2xl py-14 shadow space-y-6 font-bangla">
-        <p class="text-xl text-gray-400">
-          আপনি এখনো কোন Lesson Select করেন নি
-        </p>
-        <h2 class="text-3xl font-bold">একটি Lesson Select করুন</h2>
+    <div id="word-container" class="word-container">
+      <div class="empty-state">
+        <div class="empty-icon" style="background:#eff6ff;color:#1e3a8a;">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <h3 class="font-bangla" style="font-size:1.4rem;font-weight:700;margin-bottom:8px;">একটি Lesson Select করুন</h3>
+        <p class="font-bangla" style="color:var(--text-muted);font-size:1rem;">আপনি এখনো কোন Lesson Select করেননি</p>
       </div>
-    </section>
+    </div>
 
     <!-- MODAL -->
-    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box rounded-2xl shadow-xl">
-        <div id="details-container" class="space-y-5"></div>
-        <div class="modal-action">
-          <form method="dialog">
-            <button class="btn btn-primary rounded-full">Close</button>
-          </form>
-        </div>
+    <dialog id="word_modal" style="border:none;padding:0;background:transparent;max-width:100%;">
+      <div class="modal-box-custom">
+        <div id="details-container"></div>
+        <form method="dialog">
+          <button class="modal-close-btn">Close</button>
+        </form>
       </div>
     </dialog>
 
-    <script src="./script/index.js"></script>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo-text">LexOra</div>
+          <p class="footer-desc">
+            The smartest way to build your English vocabulary — one lesson at a time.
+          </p>
+          <div class="social-row">
+            <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="social-btn" href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a class="social-btn" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a class="social-btn" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Navigate</div>
+          <a class="footer-link" href="#">Home</a>
+          <a class="footer-link" href="#">Learn</a>
+          <a class="footer-link" href="#">FAQ</a>
+          <a class="footer-link" href="#">Contact</a>
+        </div>
+        <div>
+          <div class="footer-heading">Resources</div>
+          <a class="footer-link" href="#">Vocabulary List</a>
+          <a class="footer-link" href="#">Word of the Day</a>
+          <a class="footer-link" href="#">Pronunciation Guide</a>
+          <a class="footer-link" href="#">About</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 LexOra. All rights reserved.</span>
+        <span>Built with care for learners everywhere.</span>
+      </div>
+    </footer>
+
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+
+    <script>
+      // Mobile menu toggle
+      function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('open');
+      }
+
+      // Helper to create synonym chips
+      const createElements = (arr) => {
+        return arr.map(el =>
+          `<span class="synonym-chip">${el}</span>`
+        ).join('');
+      };
+
+      // Speak a word
+      function pronounceWord(word) {
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'en-US';
+        window.speechSynthesis.speak(utterance);
+      }
+
+      // Toggle spinner
+      const manageSpinner = (status) => {
+        const spinner = document.getElementById('spinner');
+        const container = document.getElementById('word-container');
+        if (status) {
+          spinner.classList.remove('hidden');
+          container.classList.add('hidden');
+        } else {
+          spinner.classList.add('hidden');
+          container.classList.remove('hidden');
+        }
+      };
+
+      // Load lessons
+      const loadLessons = () => {
+        fetch('https://openapi.programming-hero.com/api/levels/all')
+          .then(res => res.json())
+          .then(json => displayLesson(json.data));
+      };
+
+      // Remove active from all lesson buttons
+      const removeActive = () => {
+        document.querySelectorAll('.lesson-btn').forEach(btn =>
+          btn.classList.remove('active')
+        );
+      };
+
+      // Load words for level
+      const loadLevelWord = (id) => {
+        manageSpinner(true);
+        fetch(`https://openapi.programming-hero.com/api/level/${id}`)
+          .then(res => res.json())
+          .then(data => {
+            removeActive();
+            const clickBtn = document.getElementById(`lesson-btn-${id}`);
+            if (clickBtn) clickBtn.classList.add('active');
+            displayLevelWord(data.data);
+          });
+      };
+
+      // Load word details
+      const loadWordDetail = async (id) => {
+        const res = await fetch(`https://openapi.programming-hero.com/api/word/${id}`);
+        const details = await res.json();
+        displayWordDetails(details.data);
+      };
+
+      // Display word details in modal
+      const displayWordDetails = (word) => {
+        const detailsBox = document.getElementById('details-container');
+        detailsBox.innerHTML = `
+          <h2 class="modal-word-title">${word.word}</h2>
+          <div class="modal-pronunciation">
+            <i class="fa-solid fa-microphone-lines" style="font-size:12px;"></i>
+            ${word.pronunciation}
+          </div>
+          <div class="modal-section-label">Meaning</div>
+          <div class="modal-section-content">${word.meaning}</div>
+          <div class="modal-section-label">Example</div>
+          <div class="modal-section-content" style="font-style:italic;color:#475569;">"${word.sentence}"</div>
+          <div class="modal-section-label">Synonyms</div>
+          <div>${createElements(word.synonyms)}</div>
+        `;
+        document.getElementById('word_modal').showModal();
+      };
+
+      // Display words for a level
+      const displayLevelWord = (words) => {
+        const container = document.getElementById('word-container');
+        container.innerHTML = '';
+
+        if (!words || words.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h3 class="font-bangla" style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">নেক্সট Lesson এ যান</h3>
+              <p class="font-bangla" style="color:var(--text-muted);">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+            </div>
+          `;
+          manageSpinner(false);
+          return;
+        }
+
+        words.forEach(word => {
+          const card = document.createElement('div');
+          card.className = 'word-card';
+          card.innerHTML = `
+            <h2 class="word-title">${word.word || 'Unknown'}</h2>
+            <span class="word-tag">Vocabulary</span>
+            <hr class="word-divider"/>
+            <p class="word-meaning font-bangla">
+              ${word.meaning || 'অর্থ পাওয়া যায়নি'} — <em style="font-size:0.9rem;color:#94a3b8;">${word.pronunciation || '—'}</em>
+            </p>
+            <div class="word-actions">
+              <button onclick="loadWordDetail(${word.id})" class="action-btn">
+                <i class="fa-solid fa-circle-info" style="font-size:13px;"></i> Details
+              </button>
+              <button onclick="pronounceWord('${word.word}')" class="action-btn speak">
+                <i class="fa-solid fa-volume-high" style="font-size:13px;"></i> Speak
+              </button>
+            </div>
+          `;
+          container.append(card);
+        });
+
+        manageSpinner(false);
+      };
+
+      // Display lessons
+      const displayLesson = (lessons) => {
+        const levelContainer = document.getElementById('level-container');
+        levelContainer.innerHTML = '';
+        lessons.forEach(lesson => {
+          const btn = document.createElement('button');
+          btn.id = `lesson-btn-${lesson.level_no}`;
+          btn.className = 'lesson-btn';
+          btn.onclick = () => loadLevelWord(lesson.level_no);
+          btn.innerHTML = `<i class="fa-solid fa-book-open" style="font-size:13px;"></i> Lesson ${lesson.level_no}`;
+          levelContainer.append(btn);
+        });
+      };
+
+      // Initial load
+      loadLessons();
+
+      // Search
+      document.getElementById('btn-search').addEventListener('click', () => {
+        removeActive();
+        const searchValue = document.getElementById('input-search').value.trim().toLowerCase();
+        manageSpinner(true);
+        fetch('https://openapi.programming-hero.com/api/words/all')
+          .then(res => res.json())
+          .then(data => {
+            const filtered = data.data.filter(word =>
+              word.word.toLowerCase().includes(searchValue)
+            );
+            displayLevelWord(filtered);
+          });
+      });
+
+      document.getElementById('input-search').addEventListener('keydown', e => {
+        if (e.key === 'Enter') document.getElementById('btn-search').click();
+      });
+    </script>
   </body>
 </html>
